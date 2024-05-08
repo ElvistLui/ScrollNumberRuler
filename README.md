@@ -40,7 +40,7 @@ HorizontalNumberPicker({
     this.scaleColor = const Color(0xFFE9E9E9), //刻度颜色
     this.indicatorColor = const Color(0xFF3995FF), //指示器颜色
     this.scaleTextColor = const Color(0xFF8E99A0), //刻度下的文字颜色
-  }) : super(key: key) {
+  }) : super() {
 	...
 }
 ```
@@ -67,7 +67,7 @@ HorizontalNumberPickerWrapper({
     this.scaleColor = const Color(0xFFE9E9E9),
     this.indicatorColor = const Color(0xFF3995FF),
     this.scaleTextColor = const Color(0xFF8E99A0),
-  }) : super(key: key) {
+  }) : super() {
     ...
 }
 ```
@@ -210,4 +210,5 @@ String formatIntegerStr(num number) {
 # 源码
 
 https://github.com/al4fun/HorizontalNumberPicker
+https://github.com/ElvistLui/ScrollNumberRuler
 
