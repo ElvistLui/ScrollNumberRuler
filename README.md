@@ -26,7 +26,7 @@
 
 ```dart
 HorizontalNumberPicker({
-    Key key,
+    super.key,
     this.initialValue = 500, //初始值
     this.minValue = 100, //最小可选值
     this.maxValue = 900, //最大可选值
@@ -35,7 +35,7 @@ HorizontalNumberPicker({
     this.widgetHeight = 60, //标尺高度
     this.subGridCountPerGrid = 10, //每个大格中的小格数
     this.subGridWidth = 8, //每个小格的宽度
-    @required this.onSelectedChanged, //选中值改变回调
+    required this.onSelectedChanged, //选中值改变回调
     this.scaleTransformer, //自定义标尺下的文字显示格式
     this.scaleColor = const Color(0xFFE9E9E9), //刻度颜色
     this.indicatorColor = const Color(0xFF3995FF), //指示器颜色
@@ -51,7 +51,7 @@ HorizontalNumberPicker({
 
 ```dart
 HorizontalNumberPickerWrapper({
-    Key key,
+    super.key,
     this.initialValue = 500,
     this.minValue = 100,
     this.maxValue = 900,
@@ -60,7 +60,7 @@ HorizontalNumberPickerWrapper({
     this.widgetWidth = 200,
     this.subGridCountPerGrid = 10,
     this.subGridWidth = 8,
-    @required this.onSelectedChanged,
+    required this.onSelectedChanged,
     this.titleTransformer, //自定义title的显示格式
     this.scaleTransformer,
     this.titleTextColor = const Color(0xFF3995FF), //title文字的颜色
@@ -75,28 +75,7 @@ HorizontalNumberPickerWrapper({
 # 使用示例
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-import 'horizontal_numberpicker_wrapper.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+...
 
 class _MyHomePageState extends State<MyHomePage> {
   NumberFormat _numberFormat = NumberFormat(',000');
@@ -105,6 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text("横向滚动"),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(

@@ -22,10 +22,10 @@ class HorizontalNumberPickerWrapper extends StatefulWidget {
   final void Function(int) onSelectedChanged;
 
   ///返回上方大标题所展示的数值字符串
-  String Function(int) titleTransformer;
+  String Function(int)? titleTransformer;
 
   ///返回标尺刻度所展示的数值字符串
-  final String Function(int) scaleTransformer;
+  final String Function(int)? scaleTransformer;
 
   ///标题文字颜色
   final Color titleTextColor;
@@ -40,7 +40,7 @@ class HorizontalNumberPickerWrapper extends StatefulWidget {
   final Color scaleTextColor;
 
   HorizontalNumberPickerWrapper({
-    Key key,
+    super.key,
     this.initialValue = 500,
     this.minValue = 100,
     this.maxValue = 900,
@@ -49,19 +49,17 @@ class HorizontalNumberPickerWrapper extends StatefulWidget {
     this.widgetWidth = 200,
     this.subGridCountPerGrid = 10,
     this.subGridWidth = 8,
-    @required this.onSelectedChanged,
+    required this.onSelectedChanged,
     this.titleTransformer,
     this.scaleTransformer,
     this.titleTextColor = const Color(0xFF3995FF),
     this.scaleColor = const Color(0xFFE9E9E9),
     this.indicatorColor = const Color(0xFF3995FF),
     this.scaleTextColor = const Color(0xFF8E99A0),
-  }) : super(key: key) {
-    if (titleTransformer == null) {
-      titleTransformer = (value) {
-        return value.toString();
-      };
-    }
+  }) : super() {
+    titleTransformer ??= (value) {
+      return value.toString();
+    };
   }
 
   @override
@@ -72,12 +70,12 @@ class HorizontalNumberPickerWrapper extends StatefulWidget {
 
 class HorizontalNumberPickerWrapperState
     extends State<HorizontalNumberPickerWrapper> {
-  int _selectedValue;
+  late int _selectedValue;
 
   @override
   void initState() {
-    super.initState();
     _selectedValue = widget.initialValue;
+    super.initState();
   }
 
   ///处理state的复用
@@ -101,7 +99,7 @@ class HorizontalNumberPickerWrapperState
           textBaseline: TextBaseline.alphabetic,
           children: <Widget>[
             Text(
-              widget.titleTransformer(_selectedValue),
+              widget.titleTransformer!(_selectedValue),
               style: TextStyle(
                 color: widget.titleTextColor,
                 fontSize: 40,
